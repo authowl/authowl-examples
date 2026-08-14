@@ -736,7 +736,27 @@ a:hover {
 .text-button:hover { text-decoration: underline; }
 .app-loading {
   min-height: 100dvh;
+  display: grid;
+  place-items: center;
   background: var(--bg);
+}
+.app-loading__content {
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  color: var(--muted);
+  font-size: 13px;
+  animation: loading-in 180ms var(--ease) both;
+}
+.app-loading__content svg {
+  filter: drop-shadow(0 8px 24px color-mix(in srgb, var(--gold) 24%, transparent));
+}
+@keyframes loading-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .app-loading__content { animation: none; }
 }
 .empty__owl {
   display: block;
