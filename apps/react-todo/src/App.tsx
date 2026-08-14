@@ -20,7 +20,7 @@ export function App({
   theme: Theme;
   onToggleTheme: () => void;
 }) {
-  const { user, isSignedIn } = useUser();
+  const { user, isLoaded, isSignedIn } = useUser();
   const path = window.location.pathname.replace(/\/$/, '') || '/';
 
   if (path === '/reset-password') {
@@ -37,6 +37,10 @@ export function App({
         <VerifyEmail redirectTo="/" />
       </AuthScreen>
     );
+  }
+
+  if (!isLoaded) {
+    return <AppLoading />;
   }
 
   if (!isSignedIn || !user) {
@@ -74,6 +78,17 @@ export function App({
         </div>
       </main>
     </div>
+  );
+}
+
+function AppLoading() {
+  return (
+    <main className="app-loading" aria-busy="true" aria-label="Loading your account">
+      <div className="app-loading__content" role="status">
+        <OwlMark size={42} idPrefix="loading" />
+        <span>Loading your account...</span>
+      </div>
+    </main>
   );
 }
 
