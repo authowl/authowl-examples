@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <b>Three complete apps, three AuthOwl SDKs, zero boilerplate to copy.</b><br>
+  <b>Four complete apps, three AuthOwl SDKs, zero boilerplate to copy.</b><br>
   Fork one, drop in your publishable key, and you have real authentication running in about two minutes.
 </p>
 
@@ -31,10 +31,11 @@ Each one is a real app, not a login screen with a `console.log` behind it.
 | App | Stack | The SDK it shows off |
 | --- | --- | --- |
 | **[🦉 Owl Todo](apps/react-todo)** - local todo list with filters, inline edit, and progress | Vite · React 19 · browser-only SPA | **`@authowl/react`** - provider, hooks, drop-in auth, and account settings with no app server |
+| **[🏢 Owl Org](apps/react-org)** - organization invitations, switching, roles, and membership management | Vite · React 19 · browser-only SPA | **`@authowl/react`** - organization hooks and components across owner, admin, member, and invitee flows |
 | **[✍️ Owl Blog](apps/nextjs-blog)** - public feed, drafts, likes, and editor | Next.js 16 · App Router | **`@authowl/next`** - optional `auth()` in a Server Component and protected server actions |
 | **[📋 Owl Board](apps/convex-board)** — shared kanban that syncs live between browsers | Vite · React 19 · Convex | **`@authowl/convex`** — a one-line drop-in replacement for `ConvexProviderWithClerk` |
 
-All three use **`@authowl/react`** for the sign-in UI, and all three ship the same
+All four use **`@authowl/react`** for the sign-in UI, and all four ship the same
 handwritten design system: light + dark, keyboard-reachable, no CSS framework to learn.
 
 Every app is **standalone** — its own `package.json`, its own README, no workspace, no
@@ -132,6 +133,7 @@ to the origins you allow-list.
 | App | Origin to allow |
 | --- | --- |
 | Owl Todo | `http://localhost:5173` |
+| Owl Org | `http://localhost:5175` |
 | Owl Blog | `http://localhost:3000` |
 | Owl Board | `http://localhost:5174` |
 
