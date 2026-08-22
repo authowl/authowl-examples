@@ -14,8 +14,8 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@authowl/convex": "0.1.5",
-    "@authowl/react": "0.21.1",
+    "@authowl/convex": "0.1.6",
+    "@authowl/react": "0.21.2",
     "convex": "1.45.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
