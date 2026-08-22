@@ -57,8 +57,8 @@ something in the dashboard, then watch whether the session column moves on
 
 Three things this app cannot do for itself:
 
-1. **Organizations / teams** switched on under **Settings → Auth methods**, and
-   `http://localhost:5175` on the project's allowed origins.
+1. **Organizations / teams** switched on under **Configure -> Auth methods**, and
+   `http://localhost:5175` allowed under **Configure -> Domains**.
 2. **Features and custom permissions** (`org:<feature>:<action>`) and the **custom
    roles** that carry them, under **Organizations → Features / Roles**.
 3. **Teams.** There is no client-side `createTeam` — teams are created per

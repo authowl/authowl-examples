@@ -16,7 +16,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        app: [nextjs-blog, react-todo, convex-board]
+        app: [nextjs-blog, react-todo, convex-board, react-org]
     defaults:
       run:
         working-directory: apps/${{ matrix.app }}

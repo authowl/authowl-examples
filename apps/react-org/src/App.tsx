@@ -105,7 +105,7 @@ function Bench({
       {config && !config.organizations ? (
         <p className="banner">
           This project reports <code>organizations: false</code>. Enable Organizations / teams
-          under Settings &rarr; Auth methods, or every panel below will fail.
+          under Configure &rarr; Auth methods, or every panel below will fail.
         </p>
       ) : null}
 
