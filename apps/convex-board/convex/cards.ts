@@ -39,10 +39,11 @@ async function columnCards(ctx: QueryCtx | MutationCtx, column: Column): Promise
  */
 function rankFor(cards: Doc<'cards'>[], beforeId: Id<'cards'> | null): number {
   const ranked = [...cards].sort((a, b) => a.order - b.order);
-  if (!beforeId) return (ranked.at(-1)?.order ?? 0) + 1;
+  const last = ranked[ranked.length - 1];
+  if (!beforeId) return (last?.order ?? 0) + 1;
 
   const index = ranked.findIndex((card) => card._id === beforeId);
-  if (index === -1) return (ranked.at(-1)?.order ?? 0) + 1;
+  if (index === -1) return (last?.order ?? 0) + 1;
 
   const next = ranked[index]!.order;
   const previous = index === 0 ? next - 2 : ranked[index - 1]!.order;

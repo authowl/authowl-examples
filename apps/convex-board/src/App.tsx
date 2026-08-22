@@ -29,6 +29,7 @@ export function App() {
   // A live subscription: every browser watching this board re-renders the
   // instant anyone commits a mutation. No polling, no refetching.
   const cards = useQuery(api.cards.list) as Card[] | undefined;
+  const identity = useQuery(api.cards.whoami);
 
   const addCard = useMutation(api.cards.add);
   const moveCard = useMutation(api.cards.move);
@@ -61,7 +62,11 @@ export function App() {
             <span className="brand__sub">/ Convex</span>
           </span>
 
-          <span className="live" data-live={convexAuth.isAuthenticated}>
+          <span
+            className="live"
+            data-live={convexAuth.isAuthenticated}
+            title={identity ? `JWT issuer: ${identity.issuer}` : undefined}
+          >
             <i aria-hidden="true" />
             {convexAuth.isLoading
               ? 'Connecting…'

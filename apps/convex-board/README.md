@@ -21,26 +21,41 @@
 
 ## Run it
 
-**1. AuthOwl** — in the [dashboard](https://authowl.dev): turn on **Settings → JWT issuer**,
-and allow `http://localhost:5174` as an origin.
+**1. AuthOwl** - in the [dashboard](https://dashboard.authowl.dev):
 
-**2. Convex** — link a deployment and tell it whose tokens to trust:
+- open **Configure -> JWT templates**, enable the environment's **JWT issuer**, and create the
+  **Convex** preset with the template name `convex`;
+- open **Configure -> Domains** and allow `http://localhost:5174` as an origin; and
+- copy a publishable key from the same project. A key from another AuthOwl project returns `401`
+  from public config even if it otherwise looks valid.
+
+Create the local environment file before linking Convex, then fill the two AuthOwl values:
+
+```bash
+cp .env.example .env.local
+```
+
+**2. Convex** - link a deployment and tell it whose tokens to trust:
 
 ```bash
 npm install
-npx convex dev                 # first run links a deployment and prints VITE_CONVEX_URL
+npx convex dev --once          # first run links a deployment and writes VITE_CONVEX_URL
 
 npx convex env set AUTHOWL_ISSUER_URL <jwtIssuer.issuer>
 npx convex env set AUTHOWL_PROJECT_ID <jwtIssuer.aud>
+npx convex dev --once          # deploy after the two server-side values exist
 ```
 
-Both values come from your project's public config `jwtIssuer` block. Copy the issuer
-**exactly** — `localhost` and `127.0.0.1` are different JWT issuers even on the same machine.
+Both values appear on the JWT templates page and in your project's public config `jwtIssuer`
+block. Copy the issuer **exactly** - `localhost` and `127.0.0.1` are different JWT issuers even
+on the same machine.
+
+The first `convex dev --once` can stop after linking with a missing-environment-variable error.
+That is expected on a fresh deployment: set the two Convex variables, then run it again.
 
 **3. The app**
 
 ```bash
-cp .env.example .env.local     # publishable key, API URL, VITE_CONVEX_URL
 npm run dev                    # → http://localhost:5174
 ```
 
@@ -72,6 +87,10 @@ If you have used `ConvexProviderWithClerk`, this is the same shape:
 
 `useAuth` comes from `@authowl/react` and has the shape Convex expects. Nothing else in your
 Convex code changes.
+
+Hover the green live-status pill after sign-in to see the exact issuer Convex
+read from the verified token. That value comes from `cards:whoami`, not from
+client configuration.
 
 ## Identity on the Convex side
 
