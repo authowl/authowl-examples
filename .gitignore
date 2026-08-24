@@ -36,3 +36,8 @@ pnpm-debug.log*
 
 # playwright-mcp scratch output
 .playwright-mcp/
+
+# Local investigation notes. These carry fixture credentials and, in at least
+# one case, a real person's address - and this repository is public.
+FINDINGS.md
+findings.html
