@@ -195,6 +195,22 @@ function Rail({
             </dd>
           </div>
           <div>
+            {/*
+              What the project reports as its bot challenge, provider-agnostic.
+              The widget itself is invisible and mounts inside the sign-in and
+              sign-up forms - so the only visible sign it ran is that you got
+              here. `null` means the project has none configured.
+            */}
+            <dt>Bot challenge</dt>
+            <dd>
+              {config?.captcha ? (
+                <span className="pill pill--on">{config.captcha.provider}</span>
+              ) : (
+                <span className="pill pill--off">none</span>
+              )}
+            </dd>
+          </div>
+          <div>
             <dt>Role</dt>
             <dd>
               {membership?.role ? (
